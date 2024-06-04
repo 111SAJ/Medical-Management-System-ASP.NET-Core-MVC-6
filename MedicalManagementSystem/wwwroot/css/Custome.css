@@ -1,0 +1,181 @@
+﻿* {
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    display: none;
+}
+
+footer{
+    display: none;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+table {
+    max-width: 950px;
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+
+    table.table_two {
+        border: 0;
+    }
+
+input {
+    padding: 0;
+    border: 0;
+    outline: none;
+    color: #000;
+    text-align: center;
+    width: auto;
+    max-width: 68px;
+}
+
+    input::-webkit-input-placeholder {
+        color: #000;
+    }
+
+td,
+th {
+    text-align: center;
+    padding: 5px 0;
+}
+
+table thead th {
+    border: 1px solid #000;
+    font-size: 12px;
+}
+
+table thead th {
+    border-top: 0;
+}
+
+table tbody tr td {
+    border-right: 1px solid;
+}
+
+    table tbody tr td:first-child {
+        border-left: 1px solid;
+    }
+
+table tbody {
+    border-bottom: 1px solid #000;
+}
+
+table.table_one td {
+    text-align: left;
+    padding: 5px 10px;
+}
+
+    table.table_one td h4 {
+        font-size: 20px;
+    }
+
+table.table_one tr {
+    border: 1px solid #000;
+}
+
+    table.table_one tr:first-child td {
+        border: 0;
+    }
+
+        table.table_one tr:first-child td:last-child {
+            text-align: right;
+            padding-right: 50px;
+        }
+
+table.table_one td p {
+    margin-bottom: 4px;
+}
+
+table.table_one td h5 {
+    margin-top: 7px;
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+
+table.table_one td p {
+    margin-bottom: 5px;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+    .form-group label {
+        min-width: 80px;
+        display: inline-block;
+    }
+
+tfoot tr:first-child td {
+    border: 1px solid;
+    padding: 5px 15px;
+}
+
+.bottom_text {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+    .bottom_text p {
+        display: flex;
+        flex-direction: column;
+    }
+
+.heading {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 7px;
+}
+
+    .heading p {
+        font-weight: bold;
+    }
+
+        .heading p:last-child {
+            position: absolute;
+            right: 70px;
+        }
+
+.add_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button#add_row_btn {
+    padding: 5px 10px;
+    border: 0;
+    color: #fff;
+    background: #4ab7c9;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+@media print {
+    button#add_row_btn {
+        display: none;
+    }
+
+    button{
+        display: none;
+    }
+}

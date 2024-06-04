@@ -1,0 +1,156 @@
+﻿@model MedicalManagementSystem.ViewModel.BillProductViewModel
+
+@{
+    ViewData["Title"] = "Preview Bill";
+}
+
+<head>
+    <link href="~/css/custome.css" rel="stylesheet" />
+</head>
+<div class="heading">
+    <p>Bill-Invoice</p>
+    <p>ORIGINAL COPY</p>
+</div>
+    <button class="btn btn-sm" onclick="printBill()"><i class="fa-solid fa-print"></i></button>
+<table class="table_one" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>
+            <h4>M.A SALES</h4>
+            <h5>Shadab Qureshi</h5>
+            <p>444/96,Musahebganj,Thakurganj,Lucknow</p>
+        </td>
+        <td>
+            <p><b>GSTN: 09AAEPQ6172F2ZH</b></p>
+            <p><b style="margin-right: 58px;">MOB: 7007513764</b></p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p style="margin-bottom: 10px;border-bottom: 1px solid;padding-bottom: 5px;">Buyer's Details</p>
+            <div class="form-group">
+                <p style="text-align: left; font-weight: 600;width: 100%;max-width: 100%;font-size: 17px;">@Model.Bill.Customer.CustomerName</p>
+                @* <input type="text" style="text-align: left; font-weight: 600;width: 100%;max-width: 100%;font-size: 17px;" value="@Model.Bill.Customer.CustomerName" readonly> *@
+            </div>
+            <div class="form-group">
+                <p style="text-align: left; font-weight: 300;width: 100%;max-width: 100%">@Model.Bill.Customer.CustomerAddress</p>
+            </div>
+            <div class="form-group" style="display: flex;align-items: center;">
+                <label for="" style="min-width: auto;">Mob: </label>&nbsp;
+                <p style="text-align: left; font-weight: 300;width: 100%;max-width: 100%; display: inline-block; margin-top:5px">@Model.Bill.Customer.CustomerMobile</p>
+                
+            </div>
+            <div class="form-group" style="display: flex;align-items: center;">
+                <label for="" style="min-width: auto;">GSTIN: </label>&nbsp;
+                <input type="text" style="text-align: left; font-weight: 300;width: 100%;max-width: 100%; display: inline-block;" value="09SD62SFX9856236" readonly>
+            </div>
+        </td>
+        <td style="vertical-align: sub;padding-top: 10px;">
+            <div class="form-group">
+                <label for="">INV. No. :</label>
+                @* <p style="text-align: left;" value="@Model.Bill.InvoiceNumber">@Model.Bill.InvoiceNumber</p> *@
+                <input type="text" style="text-align: left; min-width: 200px;" " value="@Model.Bill.InvoiceNumber" readonly>
+            </div>
+            <div class="form-group">
+                <label for="">Date:</label>
+                @* <p style="text-align: left;">@Model.Bill.Date.ToShortDateString()</p> *@
+                <input type="text" style="text-align: left; min-width: 200px;" " value="@Model.Bill.Date.ToShortDateString()" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="">MR Name:</label>
+                @* <p style="text-align: left;">@Model.Bill.MRName</p> *@
+                <input type="text" style="text-align: left; min-width: 200px;" value="@Model.Bill.MRName" readonly>
+            </div>
+            <div class="form-group">
+                <label for="">Due Date :</label>
+                @* <p style="text-align: left;">@Model.Bill.DueDate.ToShortDateString()</p> *@
+                <input type="text" style="text-align: left; min-width: 200px;" " value="@Model.Bill.DueDate.ToShortDateString()" readonly>
+            </div>
+        </td>
+    </tr>
+    <tbody>
+        <table class="table_two">
+            <thead>
+                <tr>
+                    <th style="width: 30px;">Sr no.</th>
+                    <th style="min-width: 259px;">Item Name</th>
+                    <th>Pack</th>
+                    <th>Batch No</th>
+                    <th>Exp</th>
+                    <th>M.R.P</th>
+                    <th>QTY+Fr</th>
+                    <th>Rate</th>
+                    <th>Ds</th>
+                    <th>GST%</th>
+                    <th>Ammount</th>
+                </tr>
+            </thead>
+            <tbody>
+                @* @foreach (var product in Model.Product) *@
+                @for (int i=0; i< Model.Product.Count; i++)
+                {
+                    var product = Model.Product[i];
+                    <tr>
+                        <td class="fw-bold">@(i + 1)</td>
+                        @* <td style="width: 100%;max-width: 100%; min-width: 100%;">@product.ItemName</td> *@
+                        <td><input type="text" style="width: 100%;max-width: 100%; min-width: 100%;" value="@product.ItemName" readonly/></td>
+                        @* <td>@product.Pack</td> *@
+                        <td><input type="text"  value="@product.Pack" readonly /></td>
+                        @* <td>@product.BatchNumber</td> *@
+                        <td><input type="text"  value="@product.BatchNumber" readonly /></td>
+                        @* <td>@product.Expiry.ToShortDateString()</td> *@
+                        <td class="p-2"><input type="text" style="min-width: 100%;" value="@product.Expiry.ToShortDateString()" readonly /></td>
+                        @* <td>@product.MRP</td> *@
+                        <td><input type="text"  value="@product.MRP" readonly /></td>
+                        @* <td>@product.QTY</td> *@
+                        <td><input type="text"  value="@product.QTY" readonly /></td>
+                        @* <td>@product.Rate</td> *@
+                        <td><input type="text"  value="@product.Rate" readonly /></td>
+                        @* <td>@product.DS</td> *@
+                        <td><input type="text"  value="@product.DS" readonly /></td>
+                        @* <td>@product.GST</td> *@
+                        <td><input type="text"  value="@product.GST" readonly /></td>
+                        @* <td>@product.SubTotal</td> *@
+                        <td><input type="text"  value="@product.SubTotal" readonly /></td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="11" style="text-align: left;">
+                        <div class="add_row">
+                            <div>
+                                <button style="display:none" id="add_row_btn">Add Row</button>
+                            </div>
+                            <p style="font-size: 17px;"><b>Total Ammount: @Model.TotalAmount.ToString("0.00")</b></p>
+                        </div>
+                    </td>
+                </tr>
+
+            </tfoot>
+        </table>
+    </tbody>
+</table>
+
+<!-- Add JavaScript to handle printing -->
+<script>
+    function printBill() {
+        window.print();
+    }
+</script>
+
+@* <script>
+    window.onload = function () {
+        // Add event listener to the button
+        document.getElementById("add_row_btn").addEventListener("click", function () {
+            // Clone the last row of the table body
+            var tbody = document.querySelector("table.table_two tbody");
+            var lastRow = tbody.lastElementChild.cloneNode(true);
+            lastRow.classList.add("added");
+
+            // Append the cloned r  ow to the table body
+            tbody.appendChild(lastRow);
+            var clonedTr = document.querySelector("tr.added input").value = "";
+        });
+    };
+</script> *@

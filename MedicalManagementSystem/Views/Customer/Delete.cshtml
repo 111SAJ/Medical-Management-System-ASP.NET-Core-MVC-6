@@ -1,0 +1,26 @@
+﻿@model Customer
+
+@{
+    ViewData["Title"] = "Customer Delete";
+}
+
+<h2 class="text-center mb-5">Customer Delete</h2>
+    <div class="row text-center">
+        @* <div class="col"></div> *@
+            <div class="col">
+                <div class="card shadow p-1">
+                    <div class="card-body">
+                        <strong>Are you sure you want to delete this Customer?</strong>
+                        <hr />
+                        <p>Name: <strong>@Model.CustomerName</strong></p>
+                        <p>Mobile: <strong>@Model.CustomerMobile</strong></p>
+                        <form asp-action="Delete" method="post">
+                            <input type="hidden" id="CustomerId" name="CustomerId" value="@Model.CustomerId" />
+                            <button class="btn btn-sm btn-outline-danger shadow me-lg-1" type="submit">Delete</button>
+                            <a class="btn btn-sm btn-outline-info shadow" asp-action="Index">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    @* <div class="col"></div> *@
+</div>

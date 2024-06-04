@@ -1,0 +1,54 @@
+﻿@model Bill
+
+@{
+    ViewData["Title"] = "Bill Create";
+}
+
+<h3 class="text-center mb-5">Bill Generate</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-outline-primary btn-sm shadow mb-2" asp-controller="Bill" asp-action="Index">Back <i class="fa-solid fa-left-long fa-fade"></i></a>
+        </div>
+    </div>
+    <div class="card shadow p-3">
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label for="InvoiceNumber" class="form-label">Invoice Number</label>
+                    <input type="text" class="form-control" id="InvoiceNumber" name="InvoiceNumber" value="@Model.InvoiceNumber" readonly>
+                    <span class="text-danger" asp-validation-for="InvoiceNumber"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Date" class="form-label">Date</label>
+                    <input type="date" class="form-control" id="Date" name="Date" value="@Model.Date">
+                    <span class="text-danger" asp-validation-for="Date"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="CustomerId" class="form-label">Customer Name</label>
+                    <select class="form-control" id="CustomerId" name="CustomerId" asp-for="CustomerId" asp-items="ViewBag.Customers">
+                        <option value="">[SELECT]</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="CustomerId"></span>
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="MRName" class="form-label">MR Name</label>
+                    <input type="text" class="form-control" id="MRName" name="MRName" value="@Model.MRName">
+                    <span class="text-danger" asp-validation-for="MRName"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="DueDate" class="form-label">Due Date</label>
+                    <input type="date" class="form-control" id="DueDate" name="DueDate" value="@Model.DueDate">
+                    <span class="text-danger" asp-validation-for="DueDate"></span>
+                </div>
+                <button type="submit" class="btn btn-sm btn-outline-success shadow">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

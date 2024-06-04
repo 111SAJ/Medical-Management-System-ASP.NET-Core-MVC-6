@@ -1,0 +1,82 @@
+﻿@model List<MedicalManagementSystem.ViewModel.BillViewModel>
+
+@{
+    ViewData["Title"] = "Bill List";
+}
+
+<h2 class="text-center mb-5">Bill List</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-outline-primary btn-sm shadow mb-2" asp-controller="Bill" asp-action="Create">Add New <i class="fa-regular fa-user"></i></a>
+        </div>
+    </div>
+    <div class="card shadow p-3">
+        <div class="card-body">
+            <form asp-controller="Bill" asp-action="Index" method="get" id="searchForm">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search by Invoice/Customer/MR Name/Date/Due Date" name="searchString" id="searchString" value="@ViewBag.SearchString" />
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    <button class="btn btn-outline-secondary" type="button" onclick="clearSearch()">Clear</button>
+                </div>
+            </form>
+            <div class="oflow">
+            <table class="table table-responsive-sm">
+                <thead>
+                    <tr>
+                        <th style="min-width: 70px;">Sr No.</th>
+                        <th>Invoice</th>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>MR Name</th>
+                        <th>Due Date</th>
+                        <th>Bill Generated</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int serialNumber = (ViewBag.CurrentPage - 1) * ViewBag.PageSize + 1;
+                    }
+                    @foreach (var bill in Model)
+                    {
+                        <tr>
+                            <td class="fw-bold">@serialNumber</td>
+                            <td>@bill.InvoiceNumber</td>
+                            <td>@bill.Date.ToString("dd-MM-yyyy")</td>
+                            <td>@bill.CustomerName</td>
+                            <td>@bill.MRName</td>
+                            <td>@bill.DueDate.ToString("dd-MM-yyyy")</td>
+                            <td>@bill.CreatedOn.ToString("dd-MM-yyyy")</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" asp-controller="Bill" asp-action="Edit" asp-route-id="@bill.InvoiceId"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a class="btn btn-danger btn-sm" asp-controller="Bill" asp-action="Delete" asp-route-id="@bill.InvoiceId"><i class="fa-solid fa-trash"></i></a>
+                                <a class="btn btn-info btn-sm" asp-controller="Bill" asp-action="Preview" asp-route-id="@bill.InvoiceId"><i class="fa-solid fa-eye fa-fw"></i></a>
+                            </td>
+                        </tr>
+                        serialNumber++;
+                    }
+                </tbody>
+            </table>
+            </div>
+            <!-- Pagination -->
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+                            <a class="page-link" asp-action="Index" asp-route-page="@i" style="font-size:12px;">@i</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<script>
+    function clearSearch() {
+        document.getElementById('searchString').value = '';
+        document.getElementById('searchForm').submit();
+    }
+</script>

@@ -1,0 +1,96 @@
+﻿@model List<Product>
+
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<h2 class="text-center mb-5">Product List</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-outline-primary btn-sm shadow mb-2" asp-controller="Product" asp-action="Create">Add New <i class="fa-regular fa-user"></i></a>
+        </div>
+    </div>
+    <div class="card shadow p-3">
+        <div class="card-body">
+            <form asp-controller="Product" asp-action="Index" method="get" id="searchForm">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search by Product Id/Invoice/Item Name/Batch/Expiry/Created On" name="searchString" id="searchString" value="@ViewBag.SearchString" />
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    <button class="btn btn-outline-secondary" type="button" onclick="clearSearch()">Clear</button>
+                </div>
+            </form>
+
+            <div class="oflow">
+                <table class="table table-responsive-sm">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 70px;">Sr No.</th>
+                            @* <th>Product ID</th> *@
+                            <th>Invoice</th>
+                            <th style="min-width: 250px;">Item Name</th>
+                            <th>Pack</th>
+                            <th>Batch</th>
+                            <th>Expiry</th>
+                            <th>MRP</th>
+                            <th>Quantity</th>
+                            <th>Rate</th>
+                            <th>Discount</th>
+                            <th style="min-width: 100px;">GST (18%)</th>
+                            <th style="min-width: 100px;">Sub Total</th>
+                            <th style="min-width: 130px;">Created On</th>
+                            <th style="min-width: 100px;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int serialNumber = (ViewBag.CurrentPage - 1) * ViewBag.PageSize + 1;
+                        }
+                        @foreach (var product in Model)
+                        {
+                            <tr>
+                                <td class ="fw-bold">@serialNumber</td>
+                                @* <td>@product.ProductId</td> *@
+                                <td>@product.InvoiceNumber</td>
+                                <td style="min-width: 250px;">@product.ItemName</td>
+                                <td>@product.Pack</td>
+                                <td>@product.BatchNumber</td>
+                                <td style="min-width: 100px;">@product.Expiry.ToString("dd-MM-yyyy")</td>
+                                <td>@product.MRP</td>
+                                <td>@product.QTY</td>
+                                <td>@product.Rate</td>
+                                <td>@product.DS</td>
+                                <td>@product.GST</td>
+                                <td>@product.SubTotal</td>
+                                <td style="min-width: 100px;">@product.CreatedOn.ToString("dd-MM-yyyy")</td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" asp-controller="Product" asp-action="Edit" asp-route-id="@product.ProductId"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a class="btn btn-danger btn-sm" asp-controller="Product" asp-action="Delete" asp-route-id="@product.ProductId"><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            serialNumber++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- Pagination -->
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+                            <a class="page-link" asp-action="Index" asp-route-page="@i" style="font-size:12px;">@i</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<script>
+    function clearSearch() {
+        document.getElementById('searchString').value = '';
+        document.getElementById('searchForm').submit();
+    }
+</script>

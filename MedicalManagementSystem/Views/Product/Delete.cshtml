@@ -1,0 +1,30 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Product Remove";
+}
+
+<h2 class="text-center mb-5">Product Remove</h2>
+<div class="row text-center">
+    <div class="col">
+        <div class="card shadow p-1">
+            <div class="card-body">
+                <strong>Are you sure you want to remove this Product from Invoice <strong>@Model.InvoiceNumber</strong>?</strong>
+                <hr />
+                <p>Item Name: <strong>@Model.ItemName</strong></p>
+                <p>Batch Number: <strong>@Model.BatchNumber</strong></p>
+                <p>Expity Date: <strong>@Model.Expiry.ToString("dd-MM-yyyy")</strong></p>
+                <p>MRP: <strong>@Model.MRP</strong></p>
+                <p>Quantity: <strong>@Model.QTY</strong></p>
+                <p>Rate: <strong>@Model.Rate</strong></p>
+                <p>Discount: <strong>@Model.DS</strong></p>
+                <p>Total: <strong>@Model.SubTotal</strong> <span style="font-size:10px;">Including GST</span></p>
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" id="ProductId" name="ProductId" value="@Model.ProductId" />
+                    <button class="btn btn-sm btn-outline-danger shadow me-lg-1" type="submit">Delete</button>
+                    <a class="btn btn-sm btn-outline-info shadow" asp-action="Index">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

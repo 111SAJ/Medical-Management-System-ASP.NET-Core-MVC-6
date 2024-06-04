@@ -1,0 +1,90 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Product Update";
+}
+
+<h3 class="text-center mb-5">Product Update</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-outline-primary btn-sm shadow mb-2" asp-controller="Product" asp-action="Index">Back <i class="fa-solid fa-left-long fa-fade"></i></a>
+        </div>
+    </div>
+    <div class="card shadow p-3">
+        <div class="card-body">
+            <form asp-action="Edit" method="post">
+
+                <input type="hidden" id="ProductId" name="ProductId" value="@Model.ProductId" />
+
+                <div class="mb-3">
+                    <label for="InvoiceNumber" class="form-label">Invoice Number</label>
+                    <input type="number" class="form-control" id="InvoiceNumber" name="InvoiceNumber" value="@Model.InvoiceNumber" readonly>
+                    <span class="text-danger" asp-validation-for="InvoiceNumber"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="ItemName" class="form-label">Item Name</label>
+                    <input type="text" class="form-control" id="ItemName" name="ItemName" value="@Model.ItemName">
+                    <span class="text-danger" asp-validation-for="ItemName"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Pack" class="form-label">Pack</label>
+                    <input type="text" class="form-control" id="Pack" name="Pack" value="@Model.Pack">
+                    <span class="text-danger" asp-validation-for="Pack"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="BatchNumber" class="form-label">Batch Number</label>
+                    <input type="text" class="form-control" id="BatchNumber" name="BatchNumber" value="@Model.BatchNumber">
+                    <span class="text-danger" asp-validation-for="BatchNumber"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Expiry" class="form-label">Expiry Date</label>
+                    <input type="date" class="form-control" id="Expiry" name="Expiry" value="@Model.Expiry.ToString("yyyy-MM-dd")">
+                    <span class="text-danger" asp-validation-for="Expiry"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="MRP" class="form-label">MRP</label>
+                    <input type="number" class="form-control" id="MRP" name="MRP" value="@Model.MRP">
+                    <span class="text-danger" asp-validation-for="MRP"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="QTY" class="form-label">Quantity</label>
+                    <input type="number" class="form-control" id="QTY" name="QTY" value="@Model.QTY">
+                    <span class="text-danger" asp-validation-for="QTY"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Rate" class="form-label">Rate</label>
+                    <input type="number" class="form-control" id="Rate" name="Rate" value="@Model.Rate">
+                    <span class="text-danger" asp-validation-for="Rate"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="DS" class="form-label">Discount</label>
+                    <input type="number" class="form-control" id="DS" name="DS" value="@Model.DS">
+                    <span class="text-danger" asp-validation-for="DS"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="GST" class="form-label">GST</label>
+                    <input type="number" class="form-control" id="GST" name="GST" value="@Model.GST" readonly>
+                    <span class="text-danger" asp-validation-for="GST"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="SubTotal" class="form-label">SubTotal</label>
+                    <input type="number" class="form-control" id="SubTotal" name="SubTotal" value="@Model.SubTotal" readonly>
+                    <span class="text-danger" asp-validation-for="SubTotal"></span>
+                </div>
+                <button type="submit" class="btn btn-sm btn-outline-success shadow">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

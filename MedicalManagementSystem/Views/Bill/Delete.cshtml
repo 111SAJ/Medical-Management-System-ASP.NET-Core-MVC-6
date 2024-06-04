@@ -1,0 +1,28 @@
+﻿@model Bill
+
+@{
+    ViewData["Title"] = "Bill Remove";
+}
+
+<h2 class="text-center mb-5">Bill Remove</h2>
+<div class="row text-center">
+    @* <div class="col"></div> *@
+    <div class="col">
+        <div class="card shadow p-1">
+            <div class="card-body">
+                <strong>Are you sure you want to remove this Bill?</strong>
+                <hr />
+                <p>Invoice Number: <strong>@Model.InvoiceNumber</strong></p>
+                <p>Bill Date: <strong>@Model.Date.ToString("dd-MM-yyyy")</strong></p>
+                <p>Due Date: <strong>@Model.DueDate.ToString("dd-MM-yyyy")</strong></p>
+                <p>MR Name: <strong>@Model.MRName</strong></p>
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" id="InvoiceId" name="InvoiceId" value="@Model.InvoiceId" />
+                    <button class="btn btn-sm btn-outline-danger shadow me-lg-1" type="submit">Delete</button>
+                    <a class="btn btn-sm btn-outline-info shadow" asp-action="Index">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    @* <div class="col"></div> *@
+</div>

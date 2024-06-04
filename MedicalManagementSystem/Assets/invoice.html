@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        table {
+            max-width: 950px;
+            width: 100%;
+            margin: 0 auto;
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+
+        table.table_two {
+            border: 0;
+        }
+        input {
+            padding: 0;
+            border: 0;
+            outline: none;
+            color: #000;
+            text-align: center;
+            width: auto;
+            max-width: 68px;
+        }
+
+        input::-webkit-input-placeholder {
+            color: #000;
+        }
+
+        td,
+        th {
+            text-align: center;
+            padding: 5px 0;
+        }
+
+        table thead th {
+            border: 1px solid #000;
+            font-size: 12px;
+        }
+
+        table thead th {
+            border-top: 0;
+        }
+
+        table tbody tr td {
+            border-right: 1px solid;
+        }
+
+        table tbody tr td:first-child {
+            border-left: 1px solid;
+        }
+
+        table tbody {
+            border-bottom: 1px solid #000;
+        }
+
+        table.table_one td {
+            text-align: left;
+            padding: 5px 10px;
+        }
+
+        table.table_one td h4 {
+            font-size: 20px;
+        }
+
+        table.table_one tr {
+            border: 1px solid #000;
+        }
+
+        table.table_one tr:first-child td {
+            border: 0;
+        }
+
+        table.table_one tr:first-child td:last-child {
+            text-align: right;
+            padding-right: 50px;
+        }
+
+        table.table_one td p {
+            margin-bottom: 4px;
+        }
+
+        table.table_one td h5 {
+            margin-top: 7px;
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        table.table_one td p {
+            margin-bottom: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 5px;
+        }
+
+        .form-group label {
+            min-width: 80px;
+            display: inline-block;
+        }
+
+        tfoot tr:first-child td {
+            border: 1px solid;
+            padding: 5px 15px;
+        }
+
+        .bottom_text {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+
+        .bottom_text p {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .heading {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-bottom: 7px;
+        }
+
+        .heading p {
+            font-weight: bold;
+        }
+
+        .heading p:last-child {
+            position: absolute;
+            right: 70px;
+        }
+
+        .add_row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        button#add_row_btn {
+            padding: 5px 10px;
+            border: 0;
+            color: #fff;
+            background: #4ab7c9;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        @media print {
+            button#add_row_btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="heading">
+        <p>Bill-Invoice</p>
+        <p>ORIGINAL COPY</p>
+    </div>
+    <table class="table_one" cellspacing="0" cellpadding="0">
+        <tr>
+            <td>
+                <h4>M.A SALES</h4>
+                <h5>Shadab Qureshi</h5>
+                <p>444/96,Musahebganj,Thakurganj,Lucknow</p>
+            </td>
+            <td>
+                <!-- <p>Drg: UP3220B0050018</p>
+                <p>
+                    UP3221B004999
+                </p> -->
+                <p><b>GSTN: 09AAEPQ6172F2ZH</b></p>
+                <p><b style="margin-right: 58px;">MOB: 7007513764</b></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p style="margin-bottom: 10px;border-bottom: 1px solid;padding-bottom: 5px;">Buyer's Details</p>
+                <div class="form-group">
+                    <input type="text" placeholder="P.U Medicals"
+                        style="text-align: left; font-weight: 600;width: 100%;max-width: 100%;font-size: 17px;">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="444/96,Musahebganj,Thakurganj,Lucknow, Uttar Pradesh"
+                        style="text-align: left; font-weight: 300;width: 100%;max-width: 100%">
+                </div>
+                <div class="form-group" style="display: flex;align-items: center;">
+                    <label for="" style="min-width: auto;">Mob: </label>&nbsp;
+                    <input type="text" placeholder="27836273372"
+                        style="text-align: left; font-weight: 300;width: 100%;max-width: 100%; display: inline-block; ">
+                </div>
+                <div class="form-group" style="display: flex;align-items: center;">
+                    <label for="" style="min-width: auto;">GSTIN: </label>&nbsp;
+                    <input type="text" placeholder="09AAEPQ6172F2ZH"
+                        style="text-align: left; font-weight: 300;width: 100%;max-width: 100%; display: inline-block; ">
+                </div>
+            </td>
+            <td style="vertical-align: sub;padding-top: 10px;">
+                <div class="form-group">
+                    <label for="">INV. No. :</label>
+                    <input type="text" placeholder="T00188" style="text-align: left;">
+                </div>
+                <div class="form-group">
+                    <label for="">Date:</label>
+                    <input type="text" placeholder="06/04/2024" style="text-align: left;">
+                </div>
+
+                <div class="form-group">
+                    <label for="">MR Name:</label>
+                    <input type="text" placeholder="John Doe" style="text-align: left;">
+                </div>
+                <div class="form-group">
+                    <label for="">Due Date :</label>
+                    <input type="text" placeholder="06/04/2024" style="text-align: left;">
+                </div>
+            </td>
+        </tr>
+        <tbody>
+            <table class="table_two">
+                <thead>
+                    <tr>
+                        <th style="width: 20px;">Sr no.</th>
+                        <th style="min-width: 259px;">Item Name</th>
+                        <th>Pack</th>
+                        <th>Batch No</th>
+                        <th>Exp</th>
+                        <th>M.R.P</th>
+                        <th>QTY+Fr</th>
+                        <th>Rate</th>
+                        <th>Ds</th>
+                        <th>GST%</th>
+                        <th>Ammount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="text" placeholder="1" class="">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="GK Flash Refill MRP 90" style="    width: 100%;
+                                max-width: 100%;
+                                min-width: 100%;">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="45ML.">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="...">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="...">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="60.00">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="6.00">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="71.00">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="15">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="18">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="18">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" placeholder="">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="" style="width: auto;min-width: 170px;">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="">
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="11" style="text-align: left;">
+                            <div class="add_row">
+                                <div>
+                                    <button id="add_row_btn">Add Row</button>
+                                </div>
+                                <p style="font-size: 17px;"><b>Total Ammount: 1290</b></p>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tfoot>
+            </table>
+        </tbody>
+    </table>
+
+    <script>
+        window.onload = function () {
+            // Add event listener to the button
+            document.getElementById("add_row_btn").addEventListener("click", function () {
+                // Clone the last row of the table body
+                var tbody = document.querySelector("table.table_two tbody");
+                var lastRow = tbody.lastElementChild.cloneNode(true);
+                lastRow.classList.add("added");
+
+                // Append the cloned r  ow to the table body
+                tbody.appendChild(lastRow);
+                var clonedTr = document.querySelector("tr.added input").value = "";
+            });
+        };
+    </script>
+</body>
+
+</html>

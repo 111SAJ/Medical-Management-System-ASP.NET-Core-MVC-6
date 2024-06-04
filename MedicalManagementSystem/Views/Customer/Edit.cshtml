@@ -1,0 +1,42 @@
+﻿@model Customer
+
+@{
+    ViewData["Title"] = "Customer Edit";
+}
+
+<h3 class="text-center mb-5">Customer Edit</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-outline-primary btn-sm shadow mb-2" asp-controller="Customer" asp-action="Index">Back <i class="fa-solid fa-left-long fa-fade"></i></a>
+        </div>
+    </div>
+    <div class="card shadow p-3">
+        <div class="card-body">
+            <form asp-action="Edit" method="post">
+
+                <input type="hidden" id="CustomerId" name="CustomerId" value="@Model.CustomerId" />
+
+                <div class="mb-3">
+                    <label for="CustomerName" class="form-label">Customer Name</label>
+                    <input type="text" class="form-control" id="CustomerName" name="CustomerName" value="@Model.CustomerName" placeholder="Customer Name">
+                    <span class="text-danger" asp-validation-for="CustomerName"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="CustomerMobile" class="form-label">Customer Mobile</label>
+                    <input type="number" class="form-control" id="CustomerMobile" name="CustomerMobile" value="@Model.CustomerMobile" placeholder="Customer Mobile">
+                    <span class="text-danger" asp-validation-for="CustomerMobile"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="CustomerAddress" class="form-label">Customer Address</label>
+                    <textarea class="form-control" id="CustomerAddress" name="CustomerAddress" placeholder="Customer Address">@Model.CustomerAddress</textarea>
+                    <span class="text-danger" asp-validation-for="CustomerAddress"></span>
+                </div>
+                <button type="submit" class="btn btn-sm btn-outline-success shadow">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
